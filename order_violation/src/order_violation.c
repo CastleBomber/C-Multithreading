@@ -31,6 +31,8 @@ void *workerThreadFunc_B(void *tid){
 }
 
 int main(){
+    printf("Start\n");
+    
     pthread_t tid0, tid1;
 
     pthread_create(&tid0, NULL, workerThreadFunc_A, (void *)&tid0);

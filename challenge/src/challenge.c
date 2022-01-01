@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <pthread.h>
 
 char *secret;
@@ -20,10 +21,13 @@ void *setMutexAndWait(void *tid){
 
 
 int main(){
-    printf("Hello \n");
-    //pthread_t threadAlpha, threadBeta;
-    //pthread_create(&threadAlpha, NULL, setSecretAndSignal, (void *)&threadAlpha);
-    //pthread_create(&threadBeta, NULL, setSecretAndSignal, (void *)&threadBeta);
-    //pthread_exit(NULL);
+    pthread_t threadAlpha, threadBeta;
+    pthread_create(&threadAlpha, NULL, setSecretAndSignal, (void *)&threadAlpha);
+    pthread_create(&threadBeta, NULL, setSecretAndSignal, (void *)&threadBeta);
+    
+    pthread_exit(NULL);
+
+    printf("yups\n");
+    
     return 0;
 }
